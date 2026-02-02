@@ -4,6 +4,7 @@ import { memo, useEffect, useMemo } from 'react'
 import IsircConference from './IsircConference'
 import DefaultLayout from '@/components/layouts/DefaultLayout'
 import CallForPapers from './CallForPapers'
+import { Page_404 } from './NotFound'
 
 const PublicRouteComponent = memo(() => (
   <DefaultLayout>
@@ -31,6 +32,14 @@ const UseRouteElements = () => {
             element: <CallForPapers />,
           },
         ],
+      },
+      {
+        path: '*',
+        element: (
+          <DefaultLayout>
+            <Page_404 />
+          </DefaultLayout>
+        ),
       },
     ],
     []
