@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { Search } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Link, matchPath, useLocation, useNavigate } from 'react-router-dom'
+import {  matchPath, useLocation, useNavigate } from 'react-router-dom'
 
 const MENU = [
   { label: 'Home', path: '/' },

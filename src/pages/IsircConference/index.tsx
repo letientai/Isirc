@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Calendar, Users, BookOpen, Users2, Handshake, Network, Presentation } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { SpeakerCard } from './components/SpeakerCard'

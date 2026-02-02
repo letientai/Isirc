@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import IsircConference from './pages/IsircConference'
 import UseRouteElements from './pages/routes'
 
 function App() {

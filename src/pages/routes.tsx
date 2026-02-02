@@ -1,4 +1,4 @@
-import { Navigate, Outlet, useLocation, useRoutes } from 'react-router-dom'
+import { Outlet, useLocation, useRoutes } from 'react-router-dom'
 import nprogress from 'nprogress'
 import { memo, useEffect, useMemo } from 'react'
 import IsircConference from './IsircConference'
