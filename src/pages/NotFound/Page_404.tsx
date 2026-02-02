@@ -1,7 +1,5 @@
-import { useNavigate } from 'react-router-dom'
 
 function Page_404() {
-  const navigate = useNavigate()
 
   return (
     <div className="bg-gray-800 w-full min-h-screen flex justify-center">
