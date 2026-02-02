@@ -1,0 +1,347 @@
+/* nprogess */
+#nprogress .bar {
+  background: linear-gradient(90deg, #ad1239 0%, #f37a0c 100%) !important;
+}
+
+#nprogress .peg {
+  box-shadow:
+    0 0 10px #ad1239,
+    0 0 5px #f37a0c !important;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #ad1239 !important;
+  border-left-color: #f37a0c !important;
+}
+
+/* loader - mặc định sử dụng kích thước lg */
+#wifi-loader {
+  --background: #62abff;
+  --front-color: #07d3c3;
+  --back-color: #c3c8de;
+  --text-color: #414856;
+  width: 64px;
+  height: 64px;
+  border-radius: 50px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Kích thước sm */
+#wifi-loader.size-sm {
+  width: 32px;
+  height: 32px;
+}
+
+#wifi-loader.size-sm svg.circle-outer {
+  height: 42px;
+  width: 42px;
+}
+
+#wifi-loader.size-sm svg.circle-middle {
+  height: 30px;
+  width: 30px;
+}
+
+#wifi-loader.size-sm svg.circle-inner {
+  height: 18px;
+  width: 18px;
+}
+
+#wifi-loader.size-sm .text {
+  bottom: -24px;
+  font-size: 10px;
+}
+
+/* Kích thước md */
+#wifi-loader.size-md {
+  width: 48px;
+  height: 48px;
+}
+
+#wifi-loader.size-md svg.circle-outer {
+  height: 64px;
+  width: 64px;
+}
+
+#wifi-loader.size-md svg.circle-middle {
+  height: 45px;
+  width: 45px;
+}
+
+#wifi-loader.size-md svg.circle-inner {
+  height: 26px;
+  width: 26px;
+}
+
+#wifi-loader.size-md .text {
+  bottom: -32px;
+  font-size: 12px;
+}
+
+/* Kích thước lg (mặc định) */
+#wifi-loader.size-lg {
+  width: 64px;
+  height: 64px;
+}
+
+#wifi-loader.size-lg svg.circle-outer {
+  height: 86px;
+  width: 86px;
+}
+
+#wifi-loader.size-lg svg.circle-middle {
+  height: 60px;
+  width: 60px;
+}
+
+#wifi-loader.size-lg svg.circle-inner {
+  height: 34px;
+  width: 34px;
+}
+
+#wifi-loader.size-lg .text {
+  bottom: -40px;
+  font-size: 14px;
+}
+
+/* Kích thước xl */
+#wifi-loader.size-xl {
+  width: 96px;
+  height: 96px;
+}
+
+#wifi-loader.size-xl svg.circle-outer {
+  height: 128px;
+  width: 128px;
+}
+
+#wifi-loader.size-xl svg.circle-middle {
+  height: 90px;
+  width: 90px;
+}
+
+#wifi-loader.size-xl svg.circle-inner {
+  height: 52px;
+  width: 52px;
+}
+
+#wifi-loader.size-xl .text {
+  bottom: -48px;
+  font-size: 16px;
+}
+
+#wifi-loader svg {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#wifi-loader svg circle {
+  position: absolute;
+  fill: none;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform: rotate(-100deg);
+  transform-origin: center;
+}
+
+#wifi-loader svg circle.back {
+  stroke: var(--back-color);
+}
+
+#wifi-loader svg circle.front {
+  stroke: var(--front-color);
+}
+
+#wifi-loader svg.circle-outer circle {
+  stroke-dasharray: 62.75 188.25;
+}
+
+#wifi-loader svg.circle-outer circle.back {
+  animation: circle-outer135 1.8s ease infinite 0.3s;
+}
+
+#wifi-loader svg.circle-outer circle.front {
+  animation: circle-outer135 1.8s ease infinite 0.15s;
+}
+
+#wifi-loader svg.circle-middle circle {
+  stroke-dasharray: 42.5 127.5;
+}
+
+#wifi-loader svg.circle-middle circle.back {
+  animation: circle-middle6123 1.8s ease infinite 0.25s;
+}
+
+#wifi-loader svg.circle-middle circle.front {
+  animation: circle-middle6123 1.8s ease infinite 0.1s;
+}
+
+#wifi-loader svg.circle-inner circle {
+  stroke-dasharray: 22 66;
+}
+
+#wifi-loader svg.circle-inner circle.back {
+  animation: circle-inner162 1.8s ease infinite 0.2s;
+}
+
+#wifi-loader svg.circle-inner circle.front {
+  animation: circle-inner162 1.8s ease infinite 0.05s;
+}
+
+#wifi-loader .text {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: lowercase;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  width: max-content;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+#wifi-loader .text::before,
+#wifi-loader .text::after {
+  content: attr(data-text);
+}
+
+#wifi-loader .text::before {
+  color: var(--text-color);
+}
+
+#wifi-loader .text::after {
+  color: var(--front-color);
+  animation: text-animation76 3.6s ease infinite;
+  position: absolute;
+  left: 0;
+}
+
+@keyframes circle-outer135 {
+  0% {
+    stroke-dashoffset: 25;
+  }
+
+  25% {
+    stroke-dashoffset: 0;
+  }
+
+  65% {
+    stroke-dashoffset: 301;
+  }
+
+  80% {
+    stroke-dashoffset: 276;
+  }
+
+  100% {
+    stroke-dashoffset: 276;
+  }
+}
+
+@keyframes circle-middle6123 {
+  0% {
+    stroke-dashoffset: 17;
+  }
+
+  25% {
+    stroke-dashoffset: 0;
+  }
+
+  65% {
+    stroke-dashoffset: 204;
+  }
+
+  80% {
+    stroke-dashoffset: 187;
+  }
+
+  100% {
+    stroke-dashoffset: 187;
+  }
+}
+
+@keyframes circle-inner162 {
+  0% {
+    stroke-dashoffset: 9;
+  }
+
+  25% {
+    stroke-dashoffset: 0;
+  }
+
+  65% {
+    stroke-dashoffset: 106;
+  }
+
+  80% {
+    stroke-dashoffset: 97;
+  }
+
+  100% {
+    stroke-dashoffset: 97;
+  }
+}
+
+@keyframes text-animation76 {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  50% {
+    clip-path: inset(0);
+  }
+
+  100% {
+    clip-path: inset(0 0 0 100%);
+  }
+}
+
+
+/* Zalo zoomzoom */
+.zalozoomzoom {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0.5;
+  z-index: -2;
+  border-radius: 100%;
+  animation: zalozoomzoom 3s linear 0.2s infinite;
+}
+
+.zalozoomzoom:nth-child(1) {
+  animation-delay: 1.2s;
+}
+
+.zalozoomzoom:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.zalozoomzoom:nth-child(3) {
+  animation-delay: 1.5s;
+}
+
+.zalozoomzoom:nth-child(4) {
+  animation-delay: 2.2s;
+}
+
+@keyframes zalozoomzoom {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}

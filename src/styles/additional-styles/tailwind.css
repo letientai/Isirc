@@ -1,0 +1,91 @@
+.dotPattern {
+  background-image: radial-gradient(rgb(35, 40, 68) 1px, transparent 1px);
+  background-size: 25px 25px;
+}
+
+@layer utilities {
+  .perspective-2200 {
+    perspective: 2200px;
+  }
+}
+
+
+/* ribbon */
+
+.ribbon-wrap {
+  position: relative;
+  width: fit-content;
+  margin-bottom: 20px;
+  margin-left: -15px;
+  font-size: 16px;
+  line-height: 18px;
+
+
+  .ribbon {
+    position: relative;
+
+    &:before {
+      content: "";
+      height: 0;
+      width: 0;
+      display: block;
+      position: absolute;
+      top: 0px;
+      right: 0;
+
+      border-top: 18px solid rgba(0, 0, 0, .3);
+      border-bottom: 18px solid rgba(0, 0, 0, .3);
+      border-left: 18px solid rgba(0, 0, 0, .3);
+      border-right: 18px solid transparent;
+    }
+
+    &:after {
+      content: "";
+      height: 3px;
+      background: rgba(0, 0, 0, .0);
+      display: block;
+      position: absolute;
+      bottom: -3px;
+      left: 15px;
+      right: 58px;
+    }
+  }
+}
+
+.ribbon a {
+  display: block;
+  padding: 8px 36px 10px 20px;
+  position: relative;
+  height: 36px;
+  margin-right: 18px;
+  background: linear-gradient(270deg, #284fbb 5.25%, #275af6 96.68%);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px 0px;
+
+  &:after {
+    content: "";
+    height: 0;
+    width: 0;
+    display: block;
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    border-top: 15px solid #284fbb;
+    border-left: 15px solid transparent;
+  }
+
+  &:before {
+    content: "";
+    height: 0;
+    width: 0;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -18px;
+    border-top: 18px solid #284fbb;
+    border-bottom: 18px solid #284fbb;
+    border-right: 18px solid transparent;
+    border-left: 18px solid transparent;
+  }
+}
