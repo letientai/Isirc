@@ -22,10 +22,10 @@ export const SpeakerCard = ({
   <Card className="h-full border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 rounded-3xl overflow-hidden">
     <CardContent className="flex flex-col h-full items-center text-center p-8">
       <div
-        className={`w-32 h-32 rounded-full mb-6 overflow-hidden bg-gray-400 ${!imageUrl ? 'flex items-center justify-center' : ''}`}
+        className={`w-32 h-32 rounded-full mb-6 overflow-hidden bg-white border border-gray-100 shadow-lg ${!imageUrl ? 'flex items-center justify-center' : ''}`}
       >
         {imageUrl ? (
-          <img src={imageUrl} alt={name} className="w-full h-full object-cover" />
+          <img src={imageUrl} alt={name} className={`w-full h-full object-cover ${isPanel ? 'p-6' : ''}`} />
         ) : (
           <div className="w-full h-full bg-[#8a8a8a]" />
         )}

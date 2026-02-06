@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { Search } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import {  matchPath, useLocation, useNavigate } from 'react-router-dom'
+import { matchPath, useLocation, useNavigate } from 'react-router-dom'
 
 const MENU = [
   { label: 'Home', path: '/' },
@@ -35,8 +35,10 @@ export const Navbar = () => {
         isScrolled ? 'bg-black/60 backdrop-blur-xl' : 'bg-transparent backdrop-blur-xs'
       }`}
     >
-      <header className="container text-white mx-auto px-6 py-4 grid grid-cols-2 xl:grid-cols-6 items-center">
-        <div className="text-4xl font-bold tracking-wider col-span-1">ISIRC</div>
+      <header className="container text-white mx-auto px-6 py-2 grid grid-cols-2 xl:grid-cols-6 items-center">
+        <div className="text-4xl font-bold tracking-wider col-span-1">
+          <img src="/assets/logo2.png" alt="" className='max-w-14'/>
+        </div>
         <div className="flex items-center gap-8 justify-end col-span-1 xl:col-span-5">
           <nav className="hidden xl:flex gap-8 text-sm font-medium uppercase tracking-wide">
             <a href="#" className="hover:text-gray-300">

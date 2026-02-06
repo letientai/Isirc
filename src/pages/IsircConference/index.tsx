@@ -3,31 +3,38 @@ import { Calendar, Users, BookOpen, Users2, Handshake, Network, Presentation } f
 import { Card, CardContent } from '@/components/ui/card'
 import { SpeakerCard } from './components/SpeakerCard'
 import { motion } from 'framer-motion'
-
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
 import { SEO } from '@/components/global/seo'
 import { useNavigate } from 'react-router-dom'
-import { useCountdown } from '@/components/hooks/useCountdown'
+import { useCountdown } from '@/hooks/useCountdown'
 
 const OPPORTUNITIES = [
   {
     title: 'Academia',
     description: 'Researchers, scholars, educators, innovators, social impact accelerators',
-    icon: <BookOpen className="w-8 h-8 text-red_app" />,
-  },
-  {
-    title: 'Policy makers',
-    description: 'Government, industry, regulatory bodies',
-    icon: <Users2 className="w-8 h-8 text-red_app" />,
+    icon: <img src="/assets/vector_01.png" alt="Academia" className="h-full" />,
   },
   {
     title: 'Civil Society',
     description: 'Citizens, knowledge mobilization entities',
-    icon: <Handshake className="w-8 h-8 text-red_app" />,
+    icon: <img src="/assets/vector_02.png" alt="Civil Society" className="h-full" />,
+  },
+  {
+    title: 'Policy makers',
+    description: 'Government, industry, regulatory bodies',
+    icon: <img src="/assets/vector_03.png" alt="Policy makers" className="h-full" />,
   },
   {
     title: 'Social Impact Organizations',
     description: 'Social entrepreneurs, social serving organizations, foundations',
-    icon: <Network className="w-8 h-8 text-red_app" />,
+    icon: <img src="/assets/vector_04.png" alt="Social Impact Organizations" className="h-full" />,
   },
 ]
 
@@ -73,7 +80,7 @@ const SPEAKERS = [
     topic: 'Unlocking Global Insights: Drivers of Social Innovation',
     description:
       'Explore diverse approaches shaping social innovation collaborations globally. Hear from representatives across various regions as they share unique insights and experiences. Discover key drivers that inspire and propel social innovation.',
-    imageUrl: '/assets/keynote_panel.png',
+    imageUrl: '/assets/logo.png',
     buttonText: 'View Program',
     isPanel: true,
   },
@@ -100,6 +107,31 @@ const ACTIVITIES = [
   },
 ]
 
+const SCHEDULE = [
+  {
+    timing: '09:00 AM - 09:30 AM',
+    session: 'Registration & Welcome',
+    location: 'Grand Ballroom',
+  },
+  { timing: '09:30 AM - 09:45 AM', session: 'Networking Tea Break', location: 'Foyer Area' },
+  {
+    timing: '09:45 AM - 10:30 AM',
+    session: 'Opening Plenary Session: Welcome Address & Keynote',
+    location: 'Meeting Room',
+  },
+  { timing: '10:30 AM - 01:00 PM', session: 'Lunch Break', location: 'Restaurant Floor' },
+  { timing: '01:30 PM - 04:00 PM', session: 'Session II', location: 'Meeting Room' },
+  {
+    timing: '04:05 PM - 04:15 PM',
+    session: 'Group Photo & Final Networking Session',
+    location: 'The Pitch',
+  },
+  {
+    timing: '04:15 PM - 05:00 PM',
+    session: 'Closing Address: Reflections & Awards Presentation',
+    location: 'Main Exit / Entrance',
+  },
+]
 const IsircConference = () => {
   const navigate = useNavigate()
   const { days, hours, minutes, seconds } = useCountdown('2026-09-03T00:00:00')
@@ -121,7 +153,7 @@ const IsircConference = () => {
         <motion.div
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('/assets/bg_landing_isirc.png')`,
+            backgroundImage: `url('/assets/bg_landing_isirc2.png')`,
           }}
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
@@ -129,7 +161,7 @@ const IsircConference = () => {
         />
 
         <motion.div
-          className="z-10 space-y-8 mt-20"
+          className="z-10 space-y-8 mt-20  px-4 sm:px-0"
           initial="hidden"
           animate="show"
           variants={{
@@ -143,7 +175,7 @@ const IsircConference = () => {
           }}
         >
           <motion.h1
-            className="text-3xl sm:text-6xl md:text-8xl font-medium tracking-[0.2em]"
+            className="text-5xl sm:text-6xl xl:text-8xl font-medium tracking-[0.2em]"
             style={{ fontFamily: "'Mochiy Pop One', sans-serif" }}
             variants={{
               hidden: { opacity: 0, y: 40 },
@@ -217,80 +249,53 @@ const IsircConference = () => {
 
       {/* Conference Information Section */}
       <section className="bg-white py-16 px-6 md:px-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-13 gap-12 items-center">
-          <motion.div
-            className="col-span-1 lg:col-span-5 flex justify-center items-center"
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-          >
-            <div className="relative w-full max-w-lg">
-              <img
-                src="/assets/image_global.png"
-                alt="Global Network Graphic"
-                className="w-full h-auto object-contain"
-              />
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="col-span-1 lg:col-span-8 flex flex-col space-y-6"
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-          >
-            <h2 className="text-2xl font-bold text-gray-700 leading-tight">
-              International Social Innovation Research Conference 2026
-            </h2>
-
-            <motion.p
-              className="text-red_app font-semibold text-lg"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.15 }}
-            >
-              Thank you for participating in ISIRC 2026!
-            </motion.p>
-
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-start mb-2 relative">
             <motion.div
-              className="text-gray-600 space-y-1 leading-relaxed text-sm md:text-base"
-              initial={{ opacity: 0, y: 20 }}
+              className="flex-1"
+              initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
             >
-              <p>
+              <h2 className="text-3xl font-bold text-gray-700 leading-tight mb-4">
+                International Social Innovation Research Conference 2026
+              </h2>
+              <p className="text-red_app font-bold text-xl">
+                Thank you for participating in ISIRC 2026!
+              </p>
+              <p className="text-gray-600 mt-4 max-w-2xl leading-relaxed">
                 Thank you for connecting with friends old and new. Over three days we shared,
                 observed, presented, and forged new paths for advancing social innovation and
                 entrepreneurship across disciplines.
-              </p>
-              <p>
+                <br />
                 This site will remain until month's end. If you have any questions, please contact
-                the <span className="text-gray-700 font-medium">ISIRC Planning Committee</span>.
+                the <span className="font-bold text-gray-700">ISIRC Planning Committee</span>.
               </p>
             </motion.div>
 
-            <motion.p
-              className="text-red_app font-semibold text-lg"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.25 }}
-            >
-              About ISIRC
-            </motion.p>
-
             <motion.div
-              className="text-gray-600 space-y-1 leading-relaxed text-sm md:text-base"
+              className="hidden md:block w-64 h-64"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+            >
+              <img
+                src="/assets/image_global.png"
+                alt="Global Network"
+                className="w-full h-full object-contain drop-shadow-2xl"
+              />
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <motion.div
+              className="border-2 border-dashed border-gray-200 rounded-[2rem] p-8 hover:border-red-200 transition-colors"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
             >
-              <p>
+              <h3 className="text-red_app text-2xl font-bold mb-4">About ISIRC</h3>
+              <p className="text-gray-600 text-sm leading-relaxed text-justify">
                 ISIRC brings together practitioners, policy makers, and scholars from diverse fields
                 interested in social innovation and entrepreneurship. We invite scholars from a
                 variety of disciplines – including social work, management, technology, design,
@@ -299,75 +304,58 @@ const IsircConference = () => {
               </p>
             </motion.div>
 
-            <motion.p
-              className="text-red_app font-semibold text-lg"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.25 }}
-            >
-              About Duy Tan University
-            </motion.p>
-
             <motion.div
-              className="text-gray-600 space-y-1 leading-relaxed text-sm md:text-base"
+              className="border-2 border-dashed border-gray-200 rounded-[2rem] p-8 hover:border-red-200 transition-colors"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: 0.1 }}
             >
-              <p>
-                Foundedin1994, Duy Tan University was the firstprivate university in Vietnamandhas
-                grown to become a multidisciplinary and diversified institution, ranked within the
-                top three universities in the country. It also hosts the Secretariat of Passage to
-                ASEAN, a network of 150 universities in Southeast Asia. The university is committed
-                to social innovation and highlights humanity as the foundation of its development.
+              <h3 className="text-red_app text-2xl font-bold mb-4">About Duy Tan University</h3>
+              <p className="text-gray-600 text-sm leading-relaxed text-justify">
+                Founded in 1994, Duy Tan University was the first private university in Vietnam and
+                has grown to become a multidisciplinary and diversified institution, ranked within
+                the top three universities in the country. It also hosts the Secretariat of Passage
+                to ASEAN, a network of 150 universities in Southeast Asia. The university is
+                committed to social innovation and highlights humanity as the foundation of its
+                development.
               </p>
             </motion.div>
 
-            <motion.p
-              className="text-red_app font-semibold text-lg"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.25 }}
-            >
-              About Da Nang
-            </motion.p>
-
             <motion.div
-              className="text-gray-600 space-y-1 leading-relaxed text-sm md:text-base"
+              className="border-2 border-dashed border-gray-200 rounded-[2rem] p-8 hover:border-red-200 transition-colors"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: 0.2 }}
             >
-              <p>
+              <h3 className="text-red_app text-2xl font-bold mb-4">About Da Nang</h3>
+              <p className="text-gray-600 text-sm leading-relaxed text-justify">
                 Da Nang (Đà Nẵng) is a vibrant, modern coastal city in Central Vietnam known for its
                 beautiful sandy beaches, impressive bridges (like the Dragon Bridge), and proximity
                 to natural wonders like the Marble Mountains and Ba Na Hills, serving as a key
                 travel hub with an international airport, offering a blend of urban convenience and
-                natural beauty with a relaxed, livable atmosphere.
+                natural beauty.
               </p>
             </motion.div>
+          </div>
 
-            <motion.div
-              className="pt-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.35 }}
+          <motion.div
+            className="pt-6 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.35 }}
+          >
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => navigate('/call-for-papers')}
+              className="min-w-xs inline-block bg-red_app hover:bg-red-700 text-white rounded-full px-10 py-3 text-md font-medium shadow-md transition-all"
+              role="button"
             >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => navigate('/call-for-papers')}
-                className="inline-block bg-red_app hover:bg-red-700 text-white rounded-full px-10 py-3 text-md font-medium shadow-md transition-all"
-                role="button"
-              >
-                Register
-              </motion.button>
-            </motion.div>
+              Register
+            </motion.button>
           </motion.div>
         </div>
       </section>
@@ -381,19 +369,68 @@ const IsircConference = () => {
             {OPPORTUNITIES.map((item, index) => (
               <Card
                 key={index}
-                className="border-none shadow-sm hover:shadow-md transition-shadow duration-300 rounded-xl overflow-hidden "
+                className="border-none shadow-sm hover:shadow-md transition-shadow duration-300 rounded-xl overflow-hidden"
               >
-                <CardContent className="flex flex-col items-center text-center px-6">
-                  <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mb-4">
-                    {item.icon}
-                  </div>
-
+                <CardContent className="flex flex-col items-center text-center justify-between px-6 gap-4">
                   <h3 className="text-red_app font-bold text-lg mb-4">{item.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                  <div className="flex items-center justify-center h-36">{item.icon}</div>
+                  <p className="flex-1 text-gray-600 text-sm leading-relaxed">{item.description}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Important Dates Section */}
+      <section className="bg-white py-16 px-6 md:px-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-4xl font-bold text-gray-700 mb-10">Important Dates</h2>
+
+          <motion.div
+            className="rounded-[2rem] border-2 border-dashed border-red-200 p-4 md:p-8 bg-red-50 shadow-sm"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <Table className="w-full border border-dashed border-red-200 rounded-xl overflow-hidden bg-red-50/30">
+              <TableHeader>
+                <TableRow className="border-b border-red-200 hover:bg-transparent divide-x divide-red-200">
+                  <TableHead className="text-red_app font-bold text-center text-lg py-6 uppercase">
+                    Timing
+                  </TableHead>
+                  <TableHead className="text-red_app font-bold text-center text-lg py-6 uppercase">
+                    Sessions
+                  </TableHead>
+                  <TableHead className="text-red_app font-bold text-center text-lg py-6 uppercase">
+                    Location
+                  </TableHead>
+                </TableRow>
+              </TableHeader>
+
+              <TableBody className="divide-y divide-red-200">
+                {SCHEDULE.map((item, index) => (
+                  <TableRow
+                    key={index}
+                    className="divide-x divide-red-200 hover:bg-red-50/40 transition-colors"
+                  >
+                    <TableCell className="py-5 px-6 text-gray-800 font-medium">
+                      {item.timing}
+                    </TableCell>
+
+                    <TableCell className="py-5 px-6 text-gray-800 font-medium text-start">
+                      {item.session}
+                    </TableCell>
+
+                    <TableCell className="py-5 px-6 text-gray-800 font-medium text-start">
+                      {item.location}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </motion.div>
         </div>
       </section>
 

@@ -3,43 +3,11 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table'
+
 
 import { Clock, Download, MapPin, Send } from 'lucide-react'
 import { useEffect } from 'react'
 
-const scheduleData = [
-  {
-    timing: '09:00 AM – 09:30 AM',
-    session: 'Registration & Welcome',
-    location: 'Grand Ballroom',
-  },
-  { timing: '09:30 AM – 09:45 AM', session: 'Networking Tea Break', location: 'Foyer Area' },
-  {
-    timing: '09:45 AM – 10:30 AM',
-    session: 'Opening Plenary Session: Welcome Address & Keynote',
-    location: 'Meeting Room',
-  },
-  { timing: '10:30 AM – 01:00 PM', session: 'Lunch Break', location: 'Restaurant Floor' },
-  { timing: '01:30 PM – 04:00 PM', session: 'Session II', location: 'Meeting Room' },
-  {
-    timing: '04:05 PM – 04:15 PM',
-    session: 'Group Photo & Final Networking Session',
-    location: 'The Pitch',
-  },
-  {
-    timing: '04:15 PM – 05:00 PM',
-    session: 'Closing Address: Reflections & Awards Presentation',
-    location: 'Main Exit / Entrance',
-  },
-]
 
 const themes = [
   {
@@ -133,7 +101,7 @@ export default function CallForPapers() {
         <motion.div
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('/assets/bg_lading_callforpapers.png')`,
+            backgroundImage: `url('/assets/bg_landing_isirc3.png')`,
           }}
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
@@ -364,68 +332,7 @@ export default function CallForPapers() {
         </div>
       </section>
 
-      {/* Important Dates Section */}
-      <section className="bg-white py-16 px-6 md:px-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="flex items-center gap-3 mb-10"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="w-1.5 h-8 bg-red_app" />
-            <h2 className="text-3xl font-bold text-red_app tracking-tight uppercase">
-              Important Dates
-            </h2>
-          </motion.div>
-
-          <motion.div
-            className="rounded-[2rem] border-2 border-dashed border-red-200 p-4 md:p-8 bg-red-50 shadow-sm"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <Table className="w-full border border-dashed border-red-200 rounded-xl overflow-hidden bg-red-50/30">
-              <TableHeader>
-                <TableRow className="border-b border-red-200 hover:bg-transparent divide-x divide-red-200">
-                  <TableHead className="text-red_app font-bold text-center text-lg py-6 uppercase">
-                    Timing
-                  </TableHead>
-                  <TableHead className="text-red_app font-bold text-center text-lg py-6 uppercase">
-                    Sessions
-                  </TableHead>
-                  <TableHead className="text-red_app font-bold text-center text-lg py-6 uppercase">
-                    Location
-                  </TableHead>
-                </TableRow>
-              </TableHeader>
-
-              <TableBody className="divide-y divide-red-200">
-                {scheduleData.map((item, index) => (
-                  <TableRow
-                    key={index}
-                    className="divide-x divide-red-200 hover:bg-red-50/40 transition-colors"
-                  >
-                    <TableCell className="py-5 px-6 text-gray-800 font-medium">
-                      {item.timing}
-                    </TableCell>
-
-                    <TableCell className="py-5 px-6 text-gray-800 font-medium">
-                      {item.session}
-                    </TableCell>
-
-                    <TableCell className="py-5 px-6 text-gray-800 font-medium">
-                      {item.location}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </motion.div>
-        </div>
-      </section>
+      
 
       {/* Submission Info Section */}
       <section className="bg-gray-100 py-20 px-6 md:px-20 overflow-hidden">
