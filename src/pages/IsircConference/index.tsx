@@ -134,7 +134,7 @@ const SCHEDULE = [
 ]
 const IsircConference = () => {
   const navigate = useNavigate()
-  const { days, hours, minutes, seconds } = useCountdown('2026-09-03T00:00:00')
+  const { days, hours, minutes, seconds } = useCountdown('2026-12-04T00:00:00')
 
   useEffect(() => {
     window.scrollTo({
@@ -208,12 +208,12 @@ const IsircConference = () => {
             <div className="flex flex-wrap justify-center gap-3">
               <div className="bg-white text-red_app px-7 py-3 rounded-md flex items-center gap-3 shadow-lg">
                 <Calendar className="w-6 h-6" />
-                <span className="text-lg font-bold">Sept 3 - 5, 2026</span>
+                <span className="text-lg font-bold">4-6th Dec, 2026</span>
               </div>
 
               <div className="bg-white/20 backdrop-blur-md border border-white/30 text-white px-7 py-3 rounded-md flex items-center gap-3 shadow-lg">
                 <Users className="w-6 h-6" />
-                <span className="text-lg font-bold">Calgary, Alberta, Canada</span>
+                <span className="text-lg font-bold">Da Nang, Vietnam</span>
               </div>
             </div>
           </motion.div>
