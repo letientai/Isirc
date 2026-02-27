@@ -9,10 +9,10 @@ const MENU = [
   { label: 'Chair & Committee', path: '/chair-committee' },
   { label: 'Call For Papers', path: '/call-for-papers' },
   { label: 'Paper Submission', path: '/paper-submission' },
-  { label: 'Formatting', path: '/formatting' },
-  { label: 'Schedule', path: '/schedule' },
   { label: 'Keynote Session', path: '/keynote-session' },
-  { label: 'Workshops', path: '/workshops' },
+  { label: 'Hotels', path: '/hotels' },
+  { label: 'Fieldtrip', url: 'https://www.ak-rt.org/da_nang' },
+  { label: 'Agenda', path: '/agenda' },
 ]
 
 export const Navbar = () => {
@@ -37,7 +37,7 @@ export const Navbar = () => {
     >
       <header className="container text-white mx-auto px-6 py-2 grid grid-cols-2 xl:grid-cols-6 items-center">
         <div className="text-4xl font-bold tracking-wider col-span-1">
-          <img src="/assets/logo2.png" alt="" className='max-w-14'/>
+          <img src="/assets/logo2.png" alt="" className="max-w-14" />
         </div>
         <div className="flex items-center gap-8 justify-end col-span-1 xl:col-span-5">
           <nav className="hidden xl:flex gap-8 text-sm font-medium uppercase tracking-wide">
@@ -77,11 +77,13 @@ export const Navbar = () => {
       <div className="bg-red-600/90 text-white scrollbar-hide">
         <ul className="flex whitespace-nowrap items-center gap-x-8 md:gap-x-10 container mx-auto px-4 text-xs md:text-sm">
           {MENU.map((item) => {
-            const isActive = matchPath(item.path, pathname) !== null
+            const isActive = item.path && matchPath(item.path, pathname) !== null
             return (
               <li key={item.path}>
                 <div
-                  onClick={() => navigate(item.path)}
+                  onClick={() =>
+                    item.url ? window.open(item.url, '_blank') : navigate(item.path || '/')
+                  }
                   className={`px-4 py-2 cursor-pointer font-bold transition ${
                     isActive ? 'bg-white text-red-600' : 'hover:bg-white/10'
                   }`}

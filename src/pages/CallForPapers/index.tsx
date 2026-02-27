@@ -14,6 +14,7 @@ import {
   Send,
 } from 'lucide-react'
 import { toast } from 'sonner'
+import { useEffect } from 'react'
 
 const themes = [
   {
@@ -61,13 +62,13 @@ const dates = [
 ]
 
 export default function CallForPapers() {
-  // useEffect(() => {
-  //   window.scrollTo({
-  //     top: 0,
-  //     left: 0,
-  //     behavior: 'smooth',
-  //   })
-  // }, [])
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    })
+  }, [])
 
   const copyToClipboard = (text: string, label: string) => {
     navigator.clipboard.writeText(text)
@@ -146,7 +147,7 @@ export default function CallForPapers() {
       </section>
 
       {/* About The Conference Section */}
-      <section className="bg-white py-16 px-6 md:px-20 overflow-hidden">
+      <section className="bg-gray-100 py-16 px-6 md:px-20 overflow-hidden">
         <div className="max-w-7xl mx-auto ">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-1.5 h-8 bg-red_app" />
@@ -217,7 +218,7 @@ export default function CallForPapers() {
 
               {/* Thông tin địa điểm & Website */}
               <motion.div
-                className="bg-gray-50 p-6 rounded-xl border-l-4 border-gray-300 space-y-3"
+                className="bg-white p-6 rounded-xl border-l-4 border-gray-300 space-y-3"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -268,7 +269,7 @@ export default function CallForPapers() {
         </div>
       </section>
 
-      <section id="important_dates" className="bg-gray-100 py-10 px-6 md:px-20">
+      <section id="important_dates" className="bg-white py-10 px-6 md:px-20">
         <div className="mx-auto max-w-7xl">
           <h2 className="text-4xl font-bold text-red_app mb-6 text-center">Important Dates</h2>
 

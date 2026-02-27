@@ -5,6 +5,7 @@ import IsircConference from './IsircConference'
 import DefaultLayout from '@/components/layouts/DefaultLayout'
 import CallForPapers from './CallForPapers'
 import { Page_404 } from './NotFound'
+import Hotels from './Hotels'
 
 const PublicRouteComponent = memo(() => (
   <DefaultLayout>
@@ -30,6 +31,10 @@ const UseRouteElements = () => {
           {
             path: '/call-for-papers',
             element: <CallForPapers />,
+          },
+          {
+            path: '/hotels',
+            element: <Hotels />,
           },
         ],
       },

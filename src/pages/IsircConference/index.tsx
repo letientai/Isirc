@@ -44,7 +44,7 @@ const SPEAKERS = [
     topic: 'Shaping Society with Social Innovation',
     description:
       'Prof. Dr. Howaldt is an internationally renowned expert in the field of social innovation and co-founder and chair of the European School of Social Innovation. Dr. Howaldt has co-edited the Encyclopedia of Social Innovation and the Atlas of Social Innovation. His research focuses on social sciences-based innovation research and social innovation.',
-    imageUrl: '/assets/image_JurgenHowaldt.png',
+    imageUrl: '/assets/speakers/image_JurgenHowaldt.png',
     url: 'https://sfs.sowi.tu-dortmund.de/en/about-us/people/howaldt/',
     buttonText: 'Full biography',
   },
@@ -53,7 +53,7 @@ const SPEAKERS = [
     topic: 'Building a Complexity Informed Pedagogy',
     description:
       "Dr. McGowan is an Associate Professor in Social Innovation at Mount Royal University's Bissett School of Business. Her research focuses on social innovation, complexity, systems change, particularly through history, which includes resiliency and unjust transitions. She was also a post-doctoral fellow at the Waterloo Institute for Social Innovation and Complexity.",
-    imageUrl: '/assets/image_KatharineMcGowan.png',
+    imageUrl: '/assets/speakers/image_KatharineMcGowan.png',
     url: 'https://www.mtroyal.ca/ProgramsCourses/FacultiesSchoolsCentres/Business/FacultyStaff/KatharineMcGowan.htm',
     buttonText: 'Full biography',
   },
@@ -62,7 +62,7 @@ const SPEAKERS = [
     topic: 'Circular Cooperatives - Prism for SI',
     description:
       'Dr. Ziegler is the Director of the Alphonse and Dorimene Desjardins International Institute for Cooperatives and Associate Professor, Department of Management at HEC Montreal. His work is inspired by social innovations not only as a source of empirical materials, but as a spring of new ideas and concepts.',
-    imageUrl: '/assets/image_RafaelZiegler.png',
+    imageUrl: '/assets/speakers/image_RafaelZiegler.png',
     url: 'https://www.hec.ca/en/profs/rafael.ziegler.html',
     buttonText: 'Full biography',
   },
@@ -71,7 +71,7 @@ const SPEAKERS = [
     topic: 'Developing an SI ecosystem: A public policy approach',
     description:
       'Dr. Almeida is the president of Portugal Social Innovation, a pioneering government initiative that mobilizes European funds to promote social innovation and entrepreneurship. He is a professor and researcher at the Centre of Social Studies (CES/FUEC) and Centre of Cooperative and Social Economy Studies.',
-    imageUrl: '/assets/image_FilipeAlmeida.png',
+    imageUrl: '/assets/speakers/image_FilipeAlmeida.png',
     url: 'https://inovacaosocial.portugal2020.pt/en/our-team/?doing_wp_cron=1737390558.3941500186920166015625',
     buttonText: 'Full biography',
   },
@@ -280,7 +280,7 @@ const IsircConference = () => {
               viewport={{ once: true }}
             >
               <img
-                src="/assets/image_global.png"
+                src="/assets/speakers/image_global.png"
                 alt="Global Network"
                 className="w-full h-full object-contain drop-shadow-2xl"
               />
@@ -305,11 +305,14 @@ const IsircConference = () => {
             </motion.div>
 
             <motion.div
-              className="border-2 border-dashed border-gray-200 rounded-[2rem] p-8 hover:border-red-200 transition-colors"
+              className="cursor-pointer border-2 border-dashed border-gray-200 rounded-[2rem] p-8 hover:border-red-200 hover:bg-red-50/10 transition-colors"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
+              onClick={() =>
+                window.open('https://www.ak-rt.org/dtu', '_blank', 'noopener,noreferrer')
+              }
             >
               <h3 className="text-red_app text-2xl font-bold mb-4">About Duy Tan University</h3>
               <p className="text-gray-600 text-sm leading-relaxed text-justify">
@@ -323,11 +326,14 @@ const IsircConference = () => {
             </motion.div>
 
             <motion.div
-              className="border-2 border-dashed border-gray-200 rounded-[2rem] p-8 hover:border-red-200 transition-colors"
+              className="cursor-pointer border-2 border-dashed border-gray-200 rounded-[2rem] p-8 hover:border-red-200 hover:bg-red-50/10 transition-colors"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
+              onClick={() =>
+                window.open('https://www.ak-rt.org/da_nang', '_blank', 'noopener,noreferrer')
+              }
             >
               <h3 className="text-red_app text-2xl font-bold mb-4">About Da Nang</h3>
               <p className="text-gray-600 text-sm leading-relaxed text-justify">
