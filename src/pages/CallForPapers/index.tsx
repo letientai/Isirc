@@ -1,11 +1,19 @@
 import { motion } from 'framer-motion'
-import { Label } from '@/components/ui/label'
-import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-import { BellRing, CalendarDays, Clock, Download, Flag, Mail, MapPin, Send } from 'lucide-react'
-import { useEffect } from 'react'
+import {
+  Clock,
+  Copy,
+  Download,
+  Flag,
+  Globe,
+  Landmark,
+  Mail,
+  MapPin,
+  Send,
+} from 'lucide-react'
+import { toast } from 'sonner'
 
 const themes = [
   {
@@ -28,43 +36,43 @@ const themes = [
 
 const publications = [
   {
-    name: 'EAI Endorsed Transactions on Industrial Networks and Intelligent Systems',
-    metrics: '',
+    title: 'Scopus Q1',
+    desc: 'Social Enterprise Journal',
+    logo: '/assets/eai.png',
   },
   {
-    name: 'EAI Endorsed Transactions on Tourism, Technology and Intelligence',
-    metrics: '',
+    title: 'Scopus Q2',
+    desc: 'EAI Endorsed Transactions on Industrial Networks and Intelligent Systems',
+    logo: '/assets/eai.png',
   },
   {
-    name: 'Social Enterprise Journal',
-    metrics: '',
+    title: 'eISSN: 3078-5855',
+    desc: 'EAI Endorsed Transactions on Tourism, Technology and Intelligence',
+    logo: '/assets/ettt.png',
   },
 ]
 
 const dates = [
-  {
-    date: 'Oct 15, 2026',
-    label: 'Abstract / Paper Submission Deadline',
-    isHighlight: true,
-  },
-  {
-    date: 'Nov 4 - 6, 2026',
-    label: 'Notification of Acceptance',
-  },
-  {
-    date: 'Dec 4 - 6, 2026',
-    label: 'Event Dates',
-  },
+  { date: '31 May 2026', event: 'Early Bird Registration' },
+  { date: '15 July 2026', event: 'Abstract/Paper Submission Deadline', highlight: true },
+  { date: '15 August 2026', event: 'Notification of Acceptance' },
+  { date: '15 September 2026', event: 'Camera-ready Submission' },
+  { date: '4–6 December 2026', event: 'Conference Dates' },
 ]
 
 export default function CallForPapers() {
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    })
-  }, [])
+  // useEffect(() => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     left: 0,
+  //     behavior: 'smooth',
+  //   })
+  // }, [])
+
+  const copyToClipboard = (text: string, label: string) => {
+    navigator.clipboard.writeText(text)
+    toast.success(`Copied ${label} to clipboard`)
+  }
 
   return (
     <div className="relative h-full w-full overflow-hidden bg-white">
@@ -138,7 +146,7 @@ export default function CallForPapers() {
       </section>
 
       {/* About The Conference Section */}
-      <section className="bg-gray-100 py-16 px-6 md:px-20 overflow-hidden">
+      <section className="bg-white py-16 px-6 md:px-20 overflow-hidden">
         <div className="max-w-7xl mx-auto ">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-1.5 h-8 bg-red_app" />
@@ -168,10 +176,10 @@ export default function CallForPapers() {
                 <Button
                   className="px-12 py-6 rounded-full text-lg font-semibold shadow-lg flex items-center gap-2 w-full"
                   variant={'danger'}
-                  onClick={() => window.open('/assets/ICCTH-Call-for-Papers.pdf', '_blank')}
+                  onClick={() => window.open('/assets/ICCTH_poster.png', '_blank')}
                 >
                   <Download className="w-5 h-5" />
-                  Download PDF
+                  Download Poster
                 </Button>
               </motion.div>
             </motion.div>
@@ -260,65 +268,26 @@ export default function CallForPapers() {
         </div>
       </section>
 
-      <section className="bg-white py-16 px-6 md:px-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="flex items-center gap-3 mb-10"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="w-1.5 h-8 bg-red_app" />
-            <h2 className="text-3xl font-bold text-red_app tracking-tight uppercase">
-              Important Dates
-            </h2>
-          </motion.div>
+      <section id="important_dates" className="bg-gray-100 py-10 px-6 md:px-20">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="text-4xl font-bold text-red_app mb-6 text-center">Important Dates</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {dates.map((item, index) => (
-              <motion.div
-                key={index}
-                className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center group"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
+          <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden p-6 shadow-lg">
+            <div className="divide-y divide-red-100">
+              {dates.map((item, index) => (
                 <div
-                  className={`mb-6 p-4 rounded-full transition-colors ${
-                    item.isHighlight
-                      ? 'bg-red_app text-white shadow-md'
-                      : 'bg-gray-50 text-gray-400 group-hover:bg-red-50 group-hover:text-red_app'
-                  }`}
+                  key={`important-date-${index}`}
+                  className="flex flex-col md:flex-row md:items-center p-4 hover:bg-slate-50 transition-colors"
                 >
-                  {index === 0 ? (
-                    <Send className="w-6 h-6" />
-                  ) : index === 1 ? (
-                    <BellRing className="w-6 h-6" />
-                  ) : (
-                    <CalendarDays className="w-6 h-6" />
-                  )}
-                </div>
-
-                <span
-                  className={`text-2xl font-black mb-2 tracking-tight ${
-                    item.isHighlight ? 'text-red_app' : 'text-gray-800'
-                  }`}
-                >
-                  {item.date}
-                </span>
-
-                <p className="text-gray-500 font-medium text-sm uppercase tracking-wide leading-relaxed">
-                  {item.label}
-                </p>
-
-                {item.isHighlight && (
-                  <div className="mt-4 px-3 py-1 bg-red-100 text-red_app text-[10px] font-bold rounded-full animate-pulse">
-                    UPCOMING
+                  <div className="w-full md:w-1/3 font-bold text-gray-700">{item.date}</div>
+                  <div
+                    className={`w-full md:w-2/3 text-sm font-bold uppercase ${item.highlight ? 'text-red_app' : 'text-gray-700'}`}
+                  >
+                    {item.event}
                   </div>
-                )}
-              </motion.div>
-            ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -383,33 +352,39 @@ export default function CallForPapers() {
             <div className="flex items-center gap-3 mb-4">
               <div className="w-1.5 h-8 bg-red_app" />
               <h2 className="text-3xl font-bold text-red_app tracking-tight uppercase">
-                Publication Options (SSCI)
+                Publication Options
               </h2>
             </div>
-            <p className="text-xl font-bold text-gray-800">
+            <p className="text-lg font-medium text-gray-700">
               ARN 2026 is academically supported by the following peer-reviewed journals:
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8">
             {publications.map((item, index) => (
-              <motion.div
+              <div
                 key={index}
-                className="relative group"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
+                className="group relative bg-white p-5 md:p-6 rounded-xl border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-row items-center sm:justify-between min-h-[140px] overflow-hidden gap-4"
               >
-                <div className="absolute inset-0 bg-red_app rounded-xl -translate-x-1 translate-y-1" />
+                <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-red-600 group-hover:w-2 transition-all"></div>
 
-                <div className="relative bg-white border border-gray-200 rounded-xl p-6 h-full flex flex-col justify-center min-h-[140px] shadow-sm">
-                  <h3 className="text-gray-700 font-medium text-sm md:text-base leading-snug mb-3">
-                    {item.name}
+                <div className="pl-2 pl-4 text-left flex-1">
+                  <h3 className="text-lg md:text-xl font-bold text-red-600 mb-1 md:mb-2 leading-tight">
+                    {item.title}
                   </h3>
-                  {item.metrics && <p className="text-red_app font-bold text-sm">{item.metrics}</p>}
+                  <p className="text-xs md:text-sm text-gray-700 font-medium leading-snug">
+                    {item.desc}
+                  </p>
                 </div>
-              </motion.div>
+
+                <div className="flex-shrink-0 w-24 h-24 md:w-16 md:h-16 lg:w-24 lg:h-24 flex items-center justify-center p-2 bg-gray-50 rounded-lg border border-gray-100 transition-transform group-hover:scale-105">
+                  <img
+                    src={item.logo}
+                    alt={item.title}
+                    className="max-w-full max-h-full object-contain"
+                  />
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -443,7 +418,7 @@ export default function CallForPapers() {
                 <Button
                   variant={'danger'}
                   className="px-10 py-7 rounded-full font-bold shadow-2xl transition-all flex items-center gap-3 uppercase tracking-wider text-lg"
-                  onClick={() => window.open('https://www.iccth.org/submit', '_blank')}
+                  onClick={() => window.open('https://forms.gle/BfoBnt8HgSoNiuFY7', '_blank')}
                 >
                   <Send className="w-6 h-6" />
                   Submit Paper Now
@@ -509,8 +484,101 @@ export default function CallForPapers() {
       </section>
 
       {/* Payment Section */}
-      <section className="bg-white py-20 px-6 md:px-20 flex flex-col items-center">
-        {/* Header Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-red_app tracking-tight uppercase mb-4">
+              P2A Official Bank Account Details
+            </h2>
+            <div className="h-1 w-24 bg-red-600 mx-auto rounded-full" />
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <Card className="border-none shadow-md overflow-hidden bg-white rounded-3xl">
+              <CardHeader className="bg-slate-900 text-white p-6 t-0">
+                <CardTitle className="flex items-center gap-3 text-xl">
+                  <Globe className="w-6 h-6 text-red-400" />
+                  International Electronic Bank Transfers (USD Account)
+                </CardTitle>
+                <p className="text-slate-400 text-sm font-normal">
+                  For institutions located outside of Vietnam
+                </p>
+              </CardHeader>
+              <CardContent className="p-8 space-y-6">
+                <InfoRow
+                  label="Beneficiary Name"
+                  value="Passage to ASEAN"
+                  onCopy={() => copyToClipboard('Passage to ASEAN', 'Beneficiary Name')}
+                />
+                <InfoRow
+                  label="Account Number (USD)"
+                  value="685608557777"
+                  highlight
+                  onCopy={() => copyToClipboard('685608557777', 'Account Number')}
+                />
+                <InfoRow
+                  label="Bank Name"
+                  value="Vietnam Joint Stock Commercial Bank for Industry and Trade (VietinBank) - Da Nang Branch"
+                />
+                <InfoRow
+                  label="SWIFT Code"
+                  value="ICBVVNVX480"
+                  highlight
+                  onCopy={() => copyToClipboard('ICBVVNVX480', 'SWIFT Code')}
+                />
+                <div className="pt-4 border-t border-slate-100 flex gap-3 italic">
+                  <MapPin className="w-4 h-4 text-slate-400 shrink-0" />
+                  <p className="text-xs text-slate-500">
+                    218 Nguyen Van Linh Street, Thanh Khe Ward, Da Nang City, Vietnam
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-none shadow-md overflow-hidden bg-white rounded-3xl">
+              <CardHeader className="bg-red-700 text-white p-6">
+                <CardTitle className="flex items-center gap-3 text-xl">
+                  <Landmark className="w-6 h-6 text-red-200" />
+                  Domestic Electronic Bank Transfers (VND Account)
+                </CardTitle>
+                <p className="text-red-100 text-sm font-normal">
+                  For institutions located within Vietnam
+                </p>
+              </CardHeader>
+              <CardContent className="p-8 space-y-6">
+                <InfoRow
+                  label="Beneficiary Name"
+                  value="Viện Hành trình ASEAN"
+                  onCopy={() => copyToClipboard('Viện Hành trình ASEAN', 'Beneficiary Name')}
+                />
+                <InfoRow
+                  label="Account Number (VND)"
+                  value="680622007777"
+                  highlight
+                  onCopy={() => copyToClipboard('680622007777', 'Account Number')}
+                />
+                <InfoRow
+                  label="Bank Name"
+                  value="Ngân hàng TMCP Công Thương Việt Nam (VietinBank) - Chi nhánh Đà Nẵng"
+                />
+                <InfoRow
+                  label="SWIFT Code"
+                  value="ICBVVNVX480"
+                  onCopy={() => copyToClipboard('ICBVVNVX480', 'SWIFT Code')}
+                />
+                <div className="pt-4 border-t border-slate-100 flex gap-3 italic">
+                  <MapPin className="w-4 h-4 text-slate-400 shrink-0" />
+                  <p className="text-xs text-slate-500">
+                    218 Nguyễn Văn Linh, Phường Thanh Khê, TP. Đà Nẵng, Việt Nam
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* <section className="bg-white py-20 px-6 md:px-20 flex flex-col items-center">
         <div className="text-center mb-8">
           <h2 className="text-5xl md:text-6xl font-bold text-red_app leading-[1.1]">
             ISIRC 2026 PAYMENT
@@ -518,7 +586,6 @@ export default function CallForPapers() {
           <p className="text-gray-700 text-lg md:text-xl mt-2">Complete registration payment</p>
         </div>
 
-        {/* Main Payment Form Card */}
         <Card className="w-full max-w-3xl bg-white shadow-md border rounded-[2rem] p-4 md:p-10">
           <CardContent className="space-y-10">
             <div className="space-y-4">
@@ -554,31 +621,13 @@ export default function CallForPapers() {
             <div className="space-y-4">
               <h3 className="text-lg font-bold text-gray-700">Payment methods</h3>
               <div className="flex flex-wrap gap-4 items-center">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Visa_2021.svg"
-                  alt="Visa"
-                  className="h-6 opacity-80"
-                />
-                {/* <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg"
-                  alt="Stripe"
-                  className="h-6 opacity-80"
-                />
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
-                  alt="PayPal"
-                  className="h-6 opacity-80"
-                /> */}
+               
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
                   alt="Mastercard"
                   className="h-8 opacity-80"
                 />
-                {/* <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg"
-                  alt="GPay"
-                  className="h-6 opacity-80"
-                /> */}
+              
               </div>
             </div>
 
@@ -639,7 +688,42 @@ export default function CallForPapers() {
             </div>
           </CardContent>
         </Card>
-      </section>
+      </section> */}
+    </div>
+  )
+}
+
+function InfoRow({
+  label,
+  value,
+  highlight = false,
+  onCopy,
+}: {
+  label: string
+  value: string
+  highlight?: boolean
+  onCopy?: () => void
+}) {
+  return (
+    <div className="flex flex-col space-y-1">
+      <span className="text-[11px] uppercase font-bold text-slate-400 tracking-wider">{label}</span>
+      <div className="flex items-center justify-between group">
+        <span
+          className={`text-base font-semibold ${highlight ? 'text-red-600 text-lg' : 'text-slate-700'}`}
+        >
+          {value}
+        </span>
+        {onCopy && (
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity"
+            onClick={onCopy}
+          >
+            <Copy className="w-4 h-4 text-slate-400" />
+          </Button>
+        )}
+      </div>
     </div>
   )
 }
